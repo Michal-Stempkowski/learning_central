@@ -11,7 +11,7 @@ public class Lesson
 
     public Lesson(String lessonDirPath)
     {
-        exercises = new HashSet<Exercise>();
+        exercises = new HashSet<>();
         lessonDir = lessonDirPath;
     }
 

@@ -1,6 +1,7 @@
 package learning.tests.business;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 import learning.business.Exercise;
 import learning.business.Lesson;
@@ -9,7 +10,6 @@ import org.junit.Test;
 
 public class WhenUsingLesson
 {
-    private static final int exampleExerciseId = 0;
     private static final String exampleLessonDir = "C:\\lesson0";
     private Lesson lesson = null;
 
@@ -41,7 +41,7 @@ public class WhenUsingLesson
     @Test
     public void shouldBeAbleToAddNewExercise()
     {
-        Exercise toBeAdded = new Exercise(exampleExerciseId);
+        Exercise toBeAdded = mock(Exercise.class);
         assertEquals(0, lesson.getExercises().size());
         lesson.addExercise(toBeAdded);
 
@@ -52,7 +52,7 @@ public class WhenUsingLesson
     @Test
     public void shouldBeAbleToRemoveExercise()
     {
-        Exercise toBeRemoved = new Exercise(exampleExerciseId);
+        Exercise toBeRemoved = mock(Exercise.class);
         lesson.addExercise(toBeRemoved);
         assertTrue(lesson.getExercises().contains(toBeRemoved));
 
