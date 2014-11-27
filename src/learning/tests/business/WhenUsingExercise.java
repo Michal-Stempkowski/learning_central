@@ -1,16 +1,14 @@
 package learning.tests.business;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.*;
 
 import learning.business.Exercise;
 import learning.business.ExerciseTemplate;
-import learning.business.Fact;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
 
 public class WhenUsingExercise
 {
@@ -31,17 +29,29 @@ public class WhenUsingExercise
         Exercise sameExercise = new Exercise(exerciseId, exerciseTemplateMock);
         Exercise otherExercise = new Exercise(exerciseId + 1, exerciseTemplateMock);
 
-        assertEquals(exercise, sameExercise);
-        assertNotEquals(exercise, otherExercise);
+        assertThat(exercise, equalTo(sameExercise));
+        assertThat(exercise, not(equalTo(otherExercise)));
     }
 
-    @Test
-    public void shouldBeAbleToListAllFactsFromExerciseTemplate()
-    {
-        Set<Fact> facts = new HashSet<>();
+//    @Test
+//    public void questionAndAnswersShouldBeEmptyOnStart()
+//    {
+//        assertThat(exercise.getQuestions().size(), equals
+//    }
 
-        when(exerciseTemplateMock.getFacts()).thenReturn(facts);
+//    @Test
+//    public void shouldBeAbleToListAllFactsFromExerciseTemplate()
+//    {
+//        Set<Fact> facts = new HashSet<>();
+//
+//        when(exerciseTemplateMock.getFacts()).thenReturn(facts);
+//
+//        assertEquals(exercise.getAllFacts(), facts);
+//    }
 
-        assertEquals(exercise.getAllFacts(), facts);
-    }
+//    @Test
+//    public void onFactBaseResetFreeShouldBeAllFromTemplate()
+//    {
+//
+//    }
 }

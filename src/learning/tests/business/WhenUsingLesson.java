@@ -1,7 +1,8 @@
 package learning.tests.business;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.*;
 
 import learning.business.Exercise;
 import learning.business.Lesson;
@@ -22,7 +23,7 @@ public class WhenUsingLesson
     @Test
     public void itsExerciseListShouldBeEmptyOnCreation()
     {
-        assertEquals(0, lesson.getExercises().size());
+        assertThat(lesson.getExercises().size(), equalTo(0));
     }
 
     @Test
@@ -34,19 +35,19 @@ public class WhenUsingLesson
 
         Lesson someOtherLesson = new Lesson(someOtherLessonDir);
 
-        assertEquals(lesson, sameLesson);
-        assertNotEquals(lesson, someOtherLesson);
+        assertThat(lesson, equalTo(sameLesson));
+        assertThat(lesson, not(equalTo(someOtherLesson)));
     }
 
     @Test
     public void shouldBeAbleToAddNewExercise()
     {
         Exercise toBeAdded = mock(Exercise.class);
-        assertEquals(0, lesson.getExercises().size());
+        assertThat(lesson.getExercises().size(), equalTo(0));
         lesson.addExercise(toBeAdded);
 
-        assertEquals(1, lesson.getExercises().size());
-        assertTrue(lesson.getExercises().contains(toBeAdded));
+        assertThat(lesson.getExercises().size(), equalTo(1));
+        assertThat(lesson.getExercises(), hasItem(toBeAdded));
     }
 
     @Test
@@ -54,10 +55,10 @@ public class WhenUsingLesson
     {
         Exercise toBeRemoved = mock(Exercise.class);
         lesson.addExercise(toBeRemoved);
-        assertTrue(lesson.getExercises().contains(toBeRemoved));
+        assertThat(lesson.getExercises(), hasItem(toBeRemoved));
 
         lesson.removeExercise(toBeRemoved);
 
-        assertFalse(lesson.getExercises().contains(toBeRemoved));
+        assertThat(lesson.getExercises(), not(hasItem(toBeRemoved)));
     }
 }

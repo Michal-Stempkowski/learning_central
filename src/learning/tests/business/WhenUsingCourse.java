@@ -5,7 +5,9 @@ import learning.business.Lesson;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class WhenUsingCourse
 {
@@ -21,50 +23,50 @@ public class WhenUsingCourse
     @Test
     public void itsLessonListShouldBeEmptyOnCreation()
     {
-        assertEquals(0, course.getLessons().size());
+        assertThat(course.getLessons().size(), equalTo(0));
     }
 
     @Test
     public void shouldBeAbleToGetAndSetStartingOccurrences()
     {
-        assertEquals(0, course.getStartingOccurrences());
+        assertThat(course.getStartingOccurrences(), equalTo(0));
         course.setStartingOccurrences(5);
-        assertEquals(5, course.getStartingOccurrences());
+        assertThat(course.getStartingOccurrences(), equalTo(5));
     }
 
     @Test
     public void shouldBeAbleToGetAndSetAddedByError()
     {
-        assertEquals(0, course.getAddedByError());
+        assertThat(course.getAddedByError(), equalTo(0));
         course.setAddedByError(3);
-        assertEquals(3, course.getAddedByError());
+        assertThat(course.getAddedByError(), equalTo(3));
     }
 
     @Test
     public void shouldBeAbleToGetAndSetMinimumPoolSize()
     {
-        assertEquals(0, course.getMinimumPoolSize());
+        assertThat(course.getMinimumPoolSize(), equalTo(0));
         course.setMinimumPoolSize(3);
-        assertEquals(3, course.getMinimumPoolSize());
+        assertThat(course.getMinimumPoolSize(), equalTo(3));
     }
 
     @Test
     public void shouldBeAbleToGetAndSetMaximumPoolSize()
     {
-        assertEquals(0, course.getMaximumPoolSize());
+        assertThat(course.getMaximumPoolSize(), equalTo(0));
         course.setMaximumPoolSize(3);
-        assertEquals(3, course.getMaximumPoolSize());
+        assertThat(course.getMaximumPoolSize(), equalTo(3));
     }
 
     @Test
     public void shouldBeAbleToAddNewLesson()
     {
         Lesson toBeAdded = new Lesson(exampleLessonDir);
-        assertEquals(0, course.getLessons().size());
+        assertThat(course.getLessons().size(), equalTo(0));
         course.addLesson(toBeAdded);
 
-        assertEquals(1, course.getLessons().size());
-        assertTrue(course.getLessons().contains(toBeAdded));
+        assertThat(course.getLessons().size(), equalTo(1));
+        assertThat(course.getLessons(), hasItem(toBeAdded));
     }
 
     @Test
@@ -72,10 +74,10 @@ public class WhenUsingCourse
     {
         Lesson toBeRemoved = new Lesson(exampleLessonDir);
         course.addLesson(toBeRemoved);
-        assertTrue(course.getLessons().contains(toBeRemoved));
+        assertThat(course.getLessons(), hasItem(toBeRemoved));
 
         course.removeLesson(toBeRemoved);
 
-        assertFalse(course.getLessons().contains(toBeRemoved));
+        assertThat(course.getLessons(), not(hasItem(toBeRemoved)));
     }
 }
