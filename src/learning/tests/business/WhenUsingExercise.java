@@ -3,6 +3,7 @@ package learning.tests.business;
 import static learning.utils.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.closeTo;
 import static org.mockito.Mockito.*;
 
 import learning.business.Exercise;
@@ -197,5 +198,13 @@ public class WhenUsingExercise
 
         assertThat(exercise.getAnswers(), not(hasItem(removedAnswer)));
         assertThat(exercise.getUnused(), hasItem(removedAnswer));
+    }
+
+    @Test
+    public void shouldBeAbleToGetAndSetOccurrenceMultiplier()
+    {
+        assertThat(exercise.getOccurrenceMultiplier(), closeTo(1.0, 0.001));
+        exercise.setOccurrenceMultiplier(1.5);
+        assertThat(exercise.getOccurrenceMultiplier(), closeTo(1.5, 0.001));
     }
 }

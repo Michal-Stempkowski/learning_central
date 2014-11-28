@@ -12,6 +12,7 @@ public class Exercise
     protected Set<Fact> questions;
     protected Set<Fact> answers;
     protected Set<Fact> unused;
+    private double occurrenceMultiplier;
 
     public Exercise(int identifier)
     {
@@ -19,6 +20,7 @@ public class Exercise
         questions = new HashSet<>();
         answers = new HashSet<>();
         unused = new HashSet<>();
+        occurrenceMultiplier = 1.0;
     }
 
     @Override
@@ -101,5 +103,15 @@ public class Exercise
 
         answers.remove(answerToRemove);
         unused.add(answerToRemove);
+    }
+
+    public double getOccurrenceMultiplier()
+    {
+        return occurrenceMultiplier;
+    }
+
+    public void setOccurrenceMultiplier(double newOccurrenceMultiplier)
+    {
+        occurrenceMultiplier = newOccurrenceMultiplier;
     }
 }

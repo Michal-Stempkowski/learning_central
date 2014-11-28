@@ -1,7 +1,7 @@
 package learning.business;
 
 @SuppressWarnings("ClassNamingConvention")
-public class Fact
+public interface Fact
 {
-
+    public abstract String typeName();
 }
