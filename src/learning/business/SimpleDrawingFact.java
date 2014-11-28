@@ -1,6 +1,6 @@
 package learning.business;
 
-public class SimpleDrawingFact implements Fact
+public class SimpleDrawingFact extends Fact
 {
 
     @Override

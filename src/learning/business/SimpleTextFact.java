@@ -1,6 +1,6 @@
 package learning.business;
 
-public class SimpleTextFact implements Fact
+public class SimpleTextFact extends Fact
 {
 
     @Override
