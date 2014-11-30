@@ -1,6 +1,6 @@
 package learning.business.exceptions;
 
-import learning.business.Fact;
+import learning.business.template.Fact;
 
 public class FactNotFoundException extends RuntimeException
 {

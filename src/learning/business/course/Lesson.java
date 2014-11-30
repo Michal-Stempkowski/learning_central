@@ -1,13 +1,15 @@
-package learning.business;
+package learning.business.course;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class Lesson
 {
+    public static final String INTERNAL_PATH_SEPARATOR = "\\";
+
     public final String lessonDir;
 
-    private Set<Exercise> exercises;
+    private final Set<Exercise> exercises;
 
     public Lesson(String lessonDirPath)
     {
@@ -38,12 +40,17 @@ public class Lesson
         return
                 lessonDir.hashCode() == obj.hashCode() &&
                 obj instanceof Lesson &&
-                ((Lesson) obj).lessonDir.equals(lessonDir);
+                ((Lesson) obj).getId().equals(getId());
 
     }
 
     public void removeExercise(Exercise toBeRemoved)
     {
         exercises.remove(toBeRemoved);
+    }
+
+    public String getId()
+    {
+        return lessonDir;
     }
 }

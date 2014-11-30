@@ -1,4 +1,4 @@
-package learning.business;
+package learning.business.course;
 
 import java.util.HashSet;
 import java.util.Set;

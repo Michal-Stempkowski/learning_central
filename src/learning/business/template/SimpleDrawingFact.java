@@ -1,4 +1,6 @@
-package learning.business;
+package learning.business.template;
+
+import learning.business.template.Fact;
 
 public class SimpleDrawingFact extends Fact
 {

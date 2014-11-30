@@ -1,11 +1,11 @@
-package learning.tests.business;
+package learning.tests.business.course;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.mockito.Mockito.*;
 
-import learning.business.Exercise;
-import learning.business.Lesson;
+import learning.business.course.Exercise;
+import learning.business.course.Lesson;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,6 +37,7 @@ public class WhenUsingLesson
 
         assertThat(lesson, equalTo(sameLesson));
         assertThat(lesson, not(equalTo(someOtherLesson)));
+        assertThat(lesson.getId(), is(equalTo(exampleLessonDir)));
     }
 
     @Test

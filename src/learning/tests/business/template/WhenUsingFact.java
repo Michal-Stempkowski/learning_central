@@ -1,13 +1,11 @@
-package learning.tests.business;
+package learning.tests.business.template;
 
-import static learning.utils.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.*;
 
-import learning.business.Fact;
-import learning.business.SimpleDrawingFact;
-import learning.business.SimpleTextFact;
+import learning.business.template.Fact;
+import learning.business.template.SimpleDrawingFact;
+import learning.business.template.SimpleTextFact;
 import org.junit.Before;
 import org.junit.Test;
 

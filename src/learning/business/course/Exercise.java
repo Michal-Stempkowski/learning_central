@@ -1,5 +1,7 @@
-package learning.business;
+package learning.business.course;
 
+import learning.business.template.ExerciseTemplate;
+import learning.business.template.Fact;
 import learning.business.exceptions.FactNotFoundException;
 
 import java.util.HashSet;
@@ -9,14 +11,18 @@ public class Exercise
 {
     public final int id;
 
-    protected Set<Fact> questions;
-    protected Set<Fact> answers;
-    protected Set<Fact> unused;
+    private final Lesson lesson;
+
+    private final Set<Fact> questions;
+    private final Set<Fact> answers;
+    private final Set<Fact> unused;
+
     private double occurrenceMultiplier;
 
-    public Exercise(int identifier)
+    public Exercise(int identifier, Lesson connectedlesson)
     {
         id = identifier;
+        lesson = connectedlesson;
         questions = new HashSet<>();
         answers = new HashSet<>();
         unused = new HashSet<>();
@@ -113,5 +119,10 @@ public class Exercise
     public void setOccurrenceMultiplier(double newOccurrenceMultiplier)
     {
         occurrenceMultiplier = newOccurrenceMultiplier;
+    }
+
+    public String getId()
+    {
+        return lesson.getId() + Lesson.INTERNAL_PATH_SEPARATOR + id;
     }
 }

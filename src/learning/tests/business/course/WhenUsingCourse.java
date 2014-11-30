@@ -1,13 +1,12 @@
-package learning.tests.business;
+package learning.tests.business.course;
 
-import learning.business.Course;
-import learning.business.Lesson;
+import learning.business.course.Course;
+import learning.business.course.Lesson;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.mockito.Mockito.*;
 
 public class WhenUsingCourse
 {

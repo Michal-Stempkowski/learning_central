@@ -1,4 +1,4 @@
-package learning.business;
+package learning.business.template;
 
 @SuppressWarnings("ClassNamingConvention")
 public abstract class Fact

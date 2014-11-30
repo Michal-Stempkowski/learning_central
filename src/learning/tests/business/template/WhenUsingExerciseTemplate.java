@@ -1,6 +1,6 @@
-package learning.tests.business;
+package learning.tests.business.template;
 
-import learning.business.ExerciseTemplate;
+import learning.business.template.ExerciseTemplate;
 import org.junit.Before;
 import org.junit.Test;
 

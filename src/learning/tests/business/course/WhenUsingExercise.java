@@ -1,14 +1,16 @@
-package learning.tests.business;
+package learning.tests.business.course;
 
 import static learning.utils.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.*;
 
-import learning.business.Exercise;
-import learning.business.ExerciseTemplate;
-import learning.business.Fact;
+import learning.business.course.Exercise;
+import learning.business.course.Lesson;
+import learning.business.template.ExerciseTemplate;
+import learning.business.template.Fact;
 import learning.business.exceptions.FactNotFoundException;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,22 +24,28 @@ public class WhenUsingExercise
     private final int exerciseId = 0;
     private Exercise exercise = null;
     private ExerciseTemplate exerciseTemplateMock = null;
+    private Lesson mockLesson;
+    private String exampleLessonPath;
 
     @Before
     public void setUp()
     {
+        exampleLessonPath = "Path";
+        mockLesson = mock(Lesson.class);
+        when(mockLesson.getId()).thenReturn(exampleLessonPath);
         exerciseTemplateMock = mock(ExerciseTemplate.class);
-        exercise = new Exercise(exerciseId);
+        exercise = new Exercise(exerciseId, mockLesson);
     }
 
     @Test
     public void theyShouldBeIdentifiedByUniqueId()
     {
-        Exercise sameExercise = new Exercise(exerciseId);
-        Exercise otherExercise = new Exercise(exerciseId + 1);
+        Exercise sameExercise = new Exercise(exerciseId, mockLesson);
+        Exercise otherExercise = new Exercise(exerciseId + 1, mockLesson);
 
         assertThat(exercise, equalTo(sameExercise));
         assertThat(exercise, not(equalTo(otherExercise)));
+        assertThat(exercise.getId(), is(equalTo(exampleLessonPath + Lesson.INTERNAL_PATH_SEPARATOR + exerciseId)));
     }
 
     @Test
