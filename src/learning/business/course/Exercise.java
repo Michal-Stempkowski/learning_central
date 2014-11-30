@@ -1,5 +1,8 @@
 package learning.business.course;
 
+import learning.business.kata.UserAnswer;
+import learning.business.kata.UserAnswerCompoundValidator;
+import learning.business.kata.UserAnswerValidator;
 import learning.business.template.ExerciseTemplate;
 import learning.business.template.Fact;
 import learning.business.exceptions.FactNotFoundException;
@@ -124,5 +127,10 @@ public class Exercise
     public String getId()
     {
         return lesson.getId() + Lesson.INTERNAL_PATH_SEPARATOR + id;
+    }
+
+    public UserAnswerValidator validateUserAnswer(UserAnswer userAnswer)
+    {
+        return new UserAnswerCompoundValidator();
     }
 }

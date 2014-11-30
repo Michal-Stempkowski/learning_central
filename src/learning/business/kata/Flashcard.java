@@ -42,4 +42,26 @@ public class Flashcard
     {
         --occurrences;
     }
+
+    public boolean isMemorized()
+    {
+        return occurrences <= 0;
+    }
+
+    public void setOccurrences(int numberOfOccurrences)
+    {
+        occurrences = numberOfOccurrences;
+    }
+
+    public void registerUserAnswer(UserAnswerValidator validator)
+    {
+        if (validator.isCorrect())
+        {
+            registerCorrectAnswer();
+        }
+        else
+        {
+            registerBadAnswer();
+        }
+    }
 }
